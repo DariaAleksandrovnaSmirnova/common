@@ -14,6 +14,6 @@ public record PaymentEvent(
         Long orderId,
 
         @NotNull(message = "Status cant be null")
-        Status status
+        String status
 ) {
 }
