@@ -1,5 +1,6 @@
 plugins {
     `java-library`
+    `maven-publish`
     id("org.springframework.boot") version "3.3.2" apply false
     id("io.spring.dependency-management") version "1.1.4"}
 
@@ -10,6 +11,7 @@ java {
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(21))
     }
+    withSourcesJar()
 }
 
 repositories {
@@ -22,4 +24,15 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-validation:3.3.2")
     implementation("com.fasterxml.jackson.core:jackson-databind:2.17.2")
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.17.2")
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("mavenJava") {
+            from(components["java"])
+            groupId = "com.github.DariaAleksandrovnaSmirnova"
+            artifactId = "common"
+            version = "1.0.0"
+        }
+    }
 }
