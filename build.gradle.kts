@@ -1,0 +1,25 @@
+plugins {
+    `java-library`
+    id("org.springframework.boot") version "3.3.2" apply false
+    id("io.spring.dependency-management") version "1.1.4"}
+
+group = "by.innowise"
+version = "v1.0.0"
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(21))
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly("org.projectlombok:lombok:1.18.32")
+    annotationProcessor("org.projectlombok:lombok:1.18.32")
+    implementation("org.springframework.boot:spring-boot-starter-validation:3.3.2")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.17.2")
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.17.2")
+}
